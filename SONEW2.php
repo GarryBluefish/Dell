@@ -197,7 +197,7 @@ class SONEW2
         $rows= array();
         if($conn){
             try{
-                $stmt=$conn->prepare("SELECT * FROM processflowsetup where Sequence = ? and Module = 'SALES' and Document = 'SO'");
+                $stmt=$conn->prepare("SELECT * FROM processflowsetup where Sequence = ? and Module = 'SALES' and Document = 'SO' LIMIT 10");
                 $stmt->bindParam(1, $Sequence, PDO::PARAM_STR, 255);
                 $stmt->execute();
                 
