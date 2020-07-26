@@ -8,8 +8,32 @@ pipeline {
     }
 
     stage('Test') {
+      parallel {
+        stage('Test') {
+          agent any
+          steps {
+            sh 'echo "Hello world"'
+          }
+        }
+
+        stage('Test Suite A') {
+          agent {
+            node {
+              label 'node99'
+            }
+
+          }
+          steps {
+            sh 'echo "test suite"'
+          }
+        }
+
+      }
+    }
+
+    stage('deploy') {
       steps {
-        sh 'echo "Hello world"'
+        sh 'echo "deploy"'
       }
     }
 
