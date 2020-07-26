@@ -17,12 +17,7 @@ pipeline {
         }
 
         stage('Test Suite A') {
-          agent {
-            node {
-              label 'node99'
-            }
-
-          }
+          agent any
           steps {
             sh 'echo "test suite"'
           }
